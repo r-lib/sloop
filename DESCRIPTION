@@ -7,7 +7,8 @@ Authors@R: c(
   )
 Description: S3 is a very flexible system which can lead to frustration. 
     This packages provides helpers to support a system of using S3 that
-    trades freedom for ease of use.
+    trades freedom for ease of use. It also provides constructors and other
+    helpers for important S3 classes in base R.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
