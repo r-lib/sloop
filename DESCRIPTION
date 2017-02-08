@@ -1,12 +1,13 @@
 Package: S3
-Title: What the Package Does (one line, title case)
+Title: Helpers for Programming with the S3 Object System
 Version: 0.0.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("RStudio", role = "cph")
   )
-Description: What the package does (one paragraph).
-Depends: R (>= 3.3.2)
+Description: S3 is a very flexible system which can lead to frustration. 
+    This packages provides helpers to support a system of using S3 that
+    trades freedom for ease of use.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
