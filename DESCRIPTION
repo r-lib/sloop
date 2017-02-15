@@ -10,6 +10,9 @@ Description: S3 is a very flexible system which can lead to frustration.
     trades freedom for ease of use. It also provides constructors and other
     helpers for important S3 classes in base R.
 License: GPL-3
+Imports:
+  codetools,
+  methods
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

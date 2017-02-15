@@ -2,6 +2,8 @@
 
 export(Date)
 export(POSIXct)
+export(is_s3_generic)
+export(is_s3_method)
 export(new_Date)
 export(new_POSIXct)
 export(new_data.frame)
