@@ -19,4 +19,5 @@ x <- Sys.time()
 s3_dispatch(print(x))
 s3_dispatch(is.numeric(x))
 s3_dispatch(as.Date(x))
+s3_dispatch(sum(x))
 }
