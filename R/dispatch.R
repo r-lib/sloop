@@ -15,7 +15,7 @@ s3_dispatch <- function(call, env = parent.frame()) {
   x <- eval(call[[2]], env)
 
   class <- if (is.object(x)) class(x) else implicit_class(x)
-  methods <-paste0(generic, ".", c(class, "default"))
+  methods <- paste0(generic, ".", c(class, "default"))
 
   exists <- vapply(methods, exists, logical(1), envir = env)
   cat(paste0(ifelse(exists, "*", " "), " ", methods,

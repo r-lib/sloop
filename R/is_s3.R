@@ -75,18 +75,17 @@ is_internal_generic <- function(x) {
   x %in% internal_generics()
 }
 
-internal_generics <- function() {
-  # Functions in S4 group generics should be the same
-  group <- c(
-    methods::getGroupMembers("Arith"),
-    methods::getGroupMembers("Compare"),
-    methods::getGroupMembers("Logic"),
-    methods::getGroupMembers("Math"),
-    methods::getGroupMembers("Math2"),
-    methods::getGroupMembers("Summary"),
-    methods::getGroupMembers("Complex")
-  )
+group_generics <- function() {
+  # S3 and S4 group generics should be identical
+  groups <- c("Arith", "Compare", "Logic", "Math", "Math2", "Summary", "Complex")
+  methods <- lapply(groups, methods::getGroupMembers)
+  names(methods) <- groups
 
+  methods
+}
+
+internal_generics <- function() {
+  group <- unlist(group_generics(), use.names = FALSE)
   primitive <- .S3PrimitiveGenerics
 
   # Extracted from ?"internal generic"
