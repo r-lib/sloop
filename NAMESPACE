@@ -2,6 +2,7 @@
 
 export(Date)
 export(POSIXct)
+export(implicit_class)
 export(is_s3_generic)
 export(is_s3_method)
 export(new_Date)
