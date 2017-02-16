@@ -27,8 +27,21 @@ s3_class <- function(x) {
     c(
       if (is.matrix(x)) "matrix",
       if (is.array(x) && !is.matrix(x)) "array",
-      typeof(x),
+      class_mode(x),
       if (is.integer(x) || is.double(x)) "numeric"
     )
   }
+}
+
+# Basically mode, but don't mess with numeric and integer
+class_mode <- function(x) {
+  type <- typeof(x)
+  switch(type,
+    language = if (identical(x[[1]], quote(`(`))) "(" else "call",
+    closure = ,
+    builtin = ,
+    special = "function",
+    symbol = "name",
+    type
+  )
 }
