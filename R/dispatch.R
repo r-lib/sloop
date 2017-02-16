@@ -25,13 +25,15 @@ s3_dispatch <- function(call, env = parent.frame()) {
   generic <- as.character(call[[1]])
   x <- eval(call[[2]], env)
 
-  if (is.object(x)) {
-    class <- class(x)
-  } else {
-    class <- implicit_class(x)
-  }
-
+  class <- s3_class(x)
   methods <- paste0(generic, ".", c(class, "default"))
+
+  # Add group generic if necssary
+  group <- find_group(generic)
+  if (!is.null(group)) {
+    group_methods <- paste0(group, ".", class)
+    methods <- c(methods, group_methods)
+  }
 
   # internal generics will always resolve to something
   # currently showing with generic name
@@ -41,13 +43,6 @@ s3_dispatch <- function(call, env = parent.frame()) {
     } else {
       methods <- generic
     }
-  }
-
-  # Add group generic if necssary
-  group <- find_group(generic)
-  if (!is.null(group)) {
-    group_methods <- paste0(group, ".", class)
-    methods <- c(methods, group_methods)
   }
 
   exists <- vapply(methods, exists, logical(1), envir = env)
