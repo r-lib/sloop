@@ -2,17 +2,30 @@
 % Please edit documentation in R/factor.R
 \name{new_factor}
 \alias{new_factor}
+\alias{new_ordered}
+\alias{reconstruct.factor}
+\alias{reconstruct.ordered}
 \title{Factor}
 \usage{
 new_factor(x, levels)
+
+new_ordered(x, levels)
+
+\method{reconstruct}{factor}(new, old)
+
+\method{reconstruct}{ordered}(new, old)
 }
 \arguments{
 \item{x}{An integer vector}
 
 \item{levels}{A character vector of levels}
+
+\item{new, old}{Arguments for reconstruction}
 }
 \description{
 A \code{factor} is an integer with attribute levels. There should be one
 level for each integer between 1 and \code{max(x)}. Note that \code{new_factor()} only
 checks types; it does not assert that the values are a valid factor.
+An \code{ordered} factor has the same properties as a factor, but possesses
+an extra class that marks levels as having a total ordering.
 }

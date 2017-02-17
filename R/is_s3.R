@@ -76,12 +76,15 @@ is_internal_generic <- function(x) {
 }
 
 group_generics <- function() {
-  # S3 and S4 group generics should be identical
-  groups <- c("Arith", "Compare", "Logic", "Math", "Math2", "Summary", "Complex")
-  methods <- lapply(groups, methods::getGroupMembers)
-  names(methods) <- groups
+  # S3 group generics can be defined by combining S4 group generics
+  groups <- list(
+    Ops = c("Arith", "Compare", "Logic"),
+    Math = c("Math", "Math2"),
+    Summary = "Summary",
+    Complex = "Complex"
+  )
 
-  methods
+  lapply(groups, function(x) unlist(lapply(x, methods::getGroupMembers)))
 }
 
 internal_generics <- function() {

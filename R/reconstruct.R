@@ -11,7 +11,7 @@
 #' `old`.
 #'
 #' @export
-#' @param new Fresly create object (typically a bare vector)
+#' @param new Freshly created object (typically a bare vector)
 #' @param old Existing object to use an template
 reconstruct <- function(new, old) {
   UseMethod("reconstruct", old)

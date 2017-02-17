@@ -7,7 +7,7 @@
 reconstruct(new, old)
 }
 \arguments{
-\item{new}{Fresly create object (typically a bare vector)}
+\item{new}{Freshly created object (typically a bare vector)}
 
 \item{old}{Existing object to use an template}
 }
