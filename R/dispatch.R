@@ -57,9 +57,12 @@ s3_dispatch <- function(call, env = parent.frame()) {
 
 #' @export
 print.method_table <- function(x, ...) {
-  bullets <- paste0(ifelse(x$exists, "*", " "), " ", x$method, "\n", collapse = "")
-  cat(bullets, sep = "")
+  bullet <- ifelse(x$exists, " *", "  ")
+  if (any(x$exists)) {
+    bullet[which(x$exists)[1]] <- "->"
+  }
 
+  cat(paste0(bullet, " ", x$method, "\n", collapse = ""), sep = "")
   invisible(x)
 }
 
