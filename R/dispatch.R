@@ -45,8 +45,7 @@ s3_dispatch <- function(call, env = parent.frame()) {
     }
   }
 
-  # rely on method() to look for methods in the right places
-  exists <- methods %in% methods(generic)
+  exists <- vapply(methods, exists, logical(1), envir = env)
 
   new_s3_scalar(
     method = methods,
