@@ -55,7 +55,7 @@ methods_exist <- function(generic, class, env = parent.frame) {
 }
 
 method_exists <- function(generic, class, env = parent.frame()) {
-  !is.null(getS3method(generic, class, envir = env, optional = TRUE))
+  !is.null(utils::getS3method(generic, class, envir = env, optional = TRUE))
 }
 
 #' @export
