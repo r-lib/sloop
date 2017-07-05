@@ -25,7 +25,6 @@ foo.character <- function(x, ..., truncate = 10) {
 # swallowed by ...
 foo("text", trncate = 5)
 
-
 foo.character <- function(x, ..., truncate = 10) {
   check_method_dots(...)
   substr(x, 1, truncate)

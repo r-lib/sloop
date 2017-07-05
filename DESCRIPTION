@@ -13,10 +13,12 @@ License: GPL-3
 Imports:
   codetools,
   methods,
-  rlang
+  rlang,
+  purrr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 URL: https://github.com/hadley/S3
 BugReports: https://github.com/hadley/S3/issues
+Suggests: testthat
