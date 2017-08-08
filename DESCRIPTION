@@ -1,14 +1,12 @@
-Package: S3
-Title: Helpers for Programming with the S3 Object System
+Package: sloop
+Title: Helpers for 'OOP' in R
 Version: 0.0.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("RStudio", role = "cph")
   )
-Description: S3 is a very flexible system which can lead to frustration. 
-    This packages provides helpers to support a system of using S3 that
-    trades freedom for ease of use. It also provides constructors and other
-    helpers for important S3 classes in base R.
+Description: A collection of helper functions to support object oriented 
+    programming.
 License: GPL-3
 Imports:
   codetools,
@@ -20,6 +18,6 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-URL: https://github.com/hadley/S3
-BugReports: https://github.com/hadley/S3/issues
+URL: https://github.com/hadley/sloop
+BugReports: https://github.com/hadley/sloop/issues
 Suggests: testthat
