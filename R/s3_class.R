@@ -23,21 +23,40 @@ s3_class <- function(x) {
   if (is.object(x)) {
     class(x)
   } else {
-    # Implicit class
     c(
-      if (is.matrix(x)) "matrix",
-      if (is.array(x) && !is.matrix(x)) "array",
-      class_mode(x),
+      dim_class(x),
+      lang_class(x),
+      base_class(x),
       if (is.integer(x) || is.double(x)) "numeric"
     )
   }
 }
 
+dim_class <- function(x) {
+  d <- length(dim(x))
+
+  if (d == 0) {
+    character()
+  } else if (d == 2) {
+    "matrix"
+  } else {
+    "array"
+  }
+}
+
+lang_class <- function(x) {
+  if (typeof(x) == "language") {
+    setdiff(class(x), "call")
+  } else {
+    character()
+  }
+}
+
 # Basically mode, but don't mess with numeric and integer
-class_mode <- function(x) {
+base_class <- function(x) {
   type <- typeof(x)
   switch(type,
-    language = if (identical(x[[1]], quote(`(`))) "(" else "call",
+    language = "call",
     closure = ,
     builtin = ,
     special = "function",
