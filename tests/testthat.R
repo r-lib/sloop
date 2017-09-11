@@ -1,4 +1,4 @@
 library(testthat)
-library(S3)
+library(sloop)
 
-test_check("S3")
+test_check("sloop")
