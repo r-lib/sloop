@@ -46,7 +46,7 @@ ftype <- function(f) {
 primitive_name <- function(f) {
   stopifnot(is.primitive(f))
 
-  str <- capture.output(print(f))
+  str <- utils::capture.output(print(f))
   match <- regexec(".Primitive\\([\"](.*?)[\"]\\)", str)
   regmatches(str, match)[[1]][2]
 }
