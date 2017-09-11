@@ -1,0 +1,25 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+# sloop
+
+The goal of sloop is to provide helpers for object oriented programming in R, particularly for S3.
+
+## Installation
+
+You can install sloop from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("hadley/S3")
+```
