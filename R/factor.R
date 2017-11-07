@@ -1,9 +1,9 @@
 #' Factor
 #'
-#' A `factor` is an integer with attribute levels. There should be one
+#' A [factor] is an integer with attribute levels. There should be one
 #' level for each integer between 1 and `max(x)`. Note that `new_factor()` only
 #' checks types; it does not assert that the values are a valid factor.
-#' An `ordered` factor has the same properties as a factor, but possesses
+#' An [ordered] factor has the same properties as a factor, but possesses
 #' an extra class that marks levels as having a total ordering.
 #'
 #' @param x An integer vector
