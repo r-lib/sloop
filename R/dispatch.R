@@ -20,8 +20,7 @@
 #'
 #' s3_dispatch(length(x1))
 #' s3_dispatch(length(x2))
-s3_dispatch <- function(call, env = parent.frame()) {
-  call <- substitute(call)
+s3_dispatch <- function(call = substitute(call), env = parent.frame()) {
   generic <- as.character(call[[1]])
   x <- eval(call[[2]], env)
 
