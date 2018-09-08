@@ -50,7 +50,7 @@ s3_dispatch <- function(call, env = parent.frame()) {
   )
 }
 
-methods_exist <- function(generic, class, env = parent.frame) {
+methods_exist <- function(generic, class, env = parent.frame()) {
   purrr::map2_lgl(generic, class, method_exists, env = env)
 }
 
