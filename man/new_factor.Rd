@@ -23,9 +23,9 @@ new_ordered(x, levels)
 \item{new, old}{Arguments for reconstruction}
 }
 \description{
-A \code{factor} is an integer with attribute levels. There should be one
+A \link{factor} is an integer with attribute levels. There should be one
 level for each integer between 1 and \code{max(x)}. Note that \code{new_factor()} only
 checks types; it does not assert that the values are a valid factor.
-An \code{ordered} factor has the same properties as a factor, but possesses
+An \link{ordered} factor has the same properties as a factor, but possesses
 an extra class that marks levels as having a total ordering.
 }
