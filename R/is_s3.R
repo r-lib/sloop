@@ -21,10 +21,9 @@
 #' is_s3_method("as.data.frame")
 #' is_s3_method("mean.Date")
 is_s3_generic <- function(fname, env = parent.frame()) {
-  if (!exists(fname, env)) return(FALSE)
+  stopifnot(is.character(fname), length(fname) == 1)
 
   f <- get(fname, env, mode = "function")
-  if (!is.function(f)) return(FALSE)
 
   if (is.primitive(f) || is_internal(f)) {
     is_internal_generic(fname)
@@ -37,6 +36,7 @@ is_s3_generic <- function(fname, env = parent.frame()) {
 #' @rdname is_s3_generic
 #' @export
 is_s3_method <- function(fname, env = parent.frame()) {
+  stopifnot(is.character(fname), length(fname) == 1)
   !is.null(find_generic(fname, env))
 }
 
@@ -66,7 +66,6 @@ find_generic <- function(name, env = parent.frame()) {
 }
 
 is_internal <- function(f) {
-  if (!is.function(f) || is.primitive(f)) return(FALSE)
   calls <- codetools::findGlobals(f, merge = FALSE)$functions
   any(calls %in% ".Internal")
 }
