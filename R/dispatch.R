@@ -27,37 +27,34 @@ s3_dispatch <- function(call, env = parent.frame()) {
 
   class <- c(s3_class(x), "default")
   names <- paste0(generic, ".", class)
-  exists <- methods_exist(generic, class, env = env)
+  impls <- methods_find(generic, class, env = env)
 
   # Add group generic if necssary
   group <- find_group(generic)
   if (!is.null(group)) {
     names <- c(names, paste0(group, ".", class))
-    exists <- c(exists, methods_exist(group, class, env = env))
+    impls <- c(impls, methods_find(group, class, env = env))
   }
 
   # internal generics will always resolve to something
   # currently showing with generic name
   if (is_internal_generic(generic)) {
     names <- c(names, generic)
-    exists <- c(exists, TRUE)
+    impls <- c(impls, get(generic))
   }
 
   structure(
     list(
       method = names,
-      exists = exists
+      impl = impls,
+      exists = !purrr::map_lgl(impls, is.null)
     ),
     class = "method_table"
   )
 }
 
-methods_exist <- function(generic, class, env = parent.frame()) {
-  purrr::map2_lgl(generic, class, method_exists, env = env)
-}
-
-method_exists <- function(generic, class, env = parent.frame()) {
-  !is.null(utils::getS3method(generic, class, envir = env, optional = TRUE))
+methods_find <- function(generic, class, env = parent.frame()) {
+  purrr::map2(generic, class, utils::getS3method, envir = env, optional = TRUE)
 }
 
 #' @export
