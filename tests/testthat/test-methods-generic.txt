@@ -1,0 +1,10 @@
+# A tibble: 7 x 4
+  generic class   visible source             
+  <chr>   <chr>   <lgl>   <chr>              
+1 anova   glm     FALSE   registered S3method
+2 anova   glmlist FALSE   registered S3method
+3 anova   lm      FALSE   registered S3method
+4 anova   lmlist  FALSE   registered S3method
+5 anova   loess   FALSE   registered S3method
+6 anova   mlm     FALSE   registered S3method
+7 anova   nls     FALSE   registered S3method

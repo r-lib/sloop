@@ -1,0 +1,14 @@
+# A tibble: 37 x 4
+   generic       class visible source
+   <chr>         <chr> <lgl>   <chr> 
+ 1 -             Date  TRUE    base  
+ 2 [             Date  TRUE    base  
+ 3 [[            Date  TRUE    base  
+ 4 [<-           Date  TRUE    base  
+ 5 +             Date  TRUE    base  
+ 6 as.character  Date  TRUE    base  
+ 7 as.data.frame Date  TRUE    base  
+ 8 as.list       Date  TRUE    base  
+ 9 as.POSIXct    Date  TRUE    base  
+10 as.POSIXlt    Date  TRUE    base  
+# ... with 27 more rows
