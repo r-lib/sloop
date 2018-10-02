@@ -5,6 +5,8 @@
 
 [![Travis build
 status](https://travis-ci.org/r-lib/sloop.svg?branch=master)](https://travis-ci.org/r-lib/sloop)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/sloop/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/sloop?branch=master)
 
 The goal of sloop is to provide tools to help interactive explore and
 understand object oriented programming in R. For help creating new
