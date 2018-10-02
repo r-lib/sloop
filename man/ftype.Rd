@@ -27,3 +27,4 @@ ftype(t.test) # Tricky!
 ftype(writeLines)
 ftype(unlist)
 }
+\concept{object inspection}

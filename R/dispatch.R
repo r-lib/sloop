@@ -43,9 +43,11 @@ s3_dispatch <- function(call, env = parent.frame()) {
     exists <- c(exists, TRUE)
   }
 
-  new_s3_scalar(
-    method = names,
-    exists = exists,
+  structure(
+    list(
+      method = names,
+      exists = exists
+    ),
     class = "method_table"
   )
 }
