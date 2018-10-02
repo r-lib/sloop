@@ -3,6 +3,8 @@
 
 # sloop
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/sloop)](https://cran.r-project.org/package=sloop)
 [![Travis build
 status](https://travis-ci.org/r-lib/sloop.svg?branch=master)](https://travis-ci.org/r-lib/sloop)
 [![Codecov test
