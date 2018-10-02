@@ -19,9 +19,8 @@
 #' ftype(writeLines)
 #' ftype(unlist)
 ftype <- function(f) {
-  fexpr <- substitute(f)
-  env <- parent.frame()
-  fname <- if (is.name(fexpr)) as.character(fexpr) else NULL
+  fexpr <- enexpr(f)
+  env <- caller_env()
 
   if (is.primitive(f)) {
     c("primitive", if (is_internal_generic(primitive_name(f))) "generic")
@@ -33,12 +32,22 @@ ftype <- function(f) {
     c("s4", "method")
   } else if (is(f, "refMethodDef")) {
     c("rc", "method")
-  } else if (!is.null(fname) && is_s3_generic(fname, env)) {
-    c("s3", "generic")
-  } else if (!is.null(fname) && is_s3_method(fname, env)) {
-    c("s3", "method")
   } else {
-    c("function")
+    if (!is_symbol(fexpr)) {
+      warning("Determination of S3 status requires function name", call. = FALSE)
+      gen <- FALSE
+      mth <- FALSE
+    } else {
+      fname <- as.character(fexpr)
+      gen <- is_s3_generic(fname, env)
+      mth <- is_s3_method(fname, env)
+    }
+
+    if (!gen & !mth) {
+      "function"
+    } else {
+      c("s3", if (gen) "generic", if (mth) "method")
+    }
   }
 }
 
