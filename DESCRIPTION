@@ -5,23 +5,23 @@ Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("RStudio", role = "cph")
   )
-Description: A collection of helper functions to support object oriented 
-    programming.
+Description: A collection of helper functions to support object
+    oriented programming.
 License: GPL-3
+URL: https://github.com/r-lib/sloop
+BugReports: https://github.com/r-lib/sloop/issues
+Depends: 
+    R (>= 3.3)
 Imports:
-  codetools,
-  methods,
-  rlang,
-  tibble,
-  purrr
+    codetools,
+    methods,
+    purrr,
+    rlang,
+    tibble
+Suggests: 
+    covr,
+    testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
-Suggests: 
-    testthat,
-    covr
-Depends: 
-    R (>= 3.3)
-URL: https://github.com/r-lib/sloop
-BugReports: https://github.com/r-lib/sloop/issues
