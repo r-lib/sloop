@@ -8,7 +8,19 @@ test_that("integer and double have final component", {
 })
 
 test_that("s3_class matches class for language objects", {
+  expect_equal(s3_class(quote(x)), "name")
   expect_equal(s3_class(quote(1 + 2)), "call")
   expect_equal(s3_class(quote((1 + 2))), c("(", "call"))
   expect_equal(s3_class(quote({1 + 2})), c("{", "call"))
+})
+
+test_that("s3_class matches class for functions", {
+  expect_equal(s3_class(function() {}), "function")
+  expect_equal(s3_class(sum), "function")
+  expect_equal(s3_class(`[`), "function")
+})
+
+test_that("calls class for S3 objects", {
+  x <- ordered(character())
+  expect_equal(s3_class(x), class(x))
 })
