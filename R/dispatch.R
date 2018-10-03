@@ -27,13 +27,13 @@ s3_dispatch <- function(call, env = parent.frame()) {
 
   class <- c(s3_class(x), "default")
   names <- paste0(generic, ".", class)
-  impls <- methods_find(generic, class, env = env)
+  impls <- method_find(generic, class, env = env)
 
   # Add group generic if necssary
   group <- find_group(generic)
   if (!is.null(group)) {
     names <- c(names, paste0(group, ".", class))
-    impls <- c(impls, methods_find(group, class, env = env))
+    impls <- c(impls, method_find(group, class, env = env))
   }
 
   # internal generics will always resolve to something
@@ -53,7 +53,7 @@ s3_dispatch <- function(call, env = parent.frame()) {
   )
 }
 
-methods_find <- function(generic, class, env = parent.frame()) {
+method_find <- function(generic, class, env = parent.frame()) {
   purrr::map2(generic, class, utils::getS3method, envir = env, optional = TRUE)
 }
 

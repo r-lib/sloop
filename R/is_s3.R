@@ -37,7 +37,7 @@ is_s3_generic <- function(fname, env = parent.frame()) {
 #' @export
 is_s3_method <- function(fname, env = parent.frame()) {
   stopifnot(is.character(fname), length(fname) == 1)
-  !is.null(find_generic(fname, env))
+  !is.null(parse_method(fname, env))
 }
 
 stop_list <- function() {
@@ -48,7 +48,8 @@ stop_list <- function() {
   }
 }
 
-find_generic <- function(name, env = parent.frame()) {
+# Returns character vector of length 2, or
+parse_method <- function(name, env = parent.frame()) {
   if (name %in% stop_list()) return(NULL)
 
   pieces <- strsplit(name, ".", fixed = TRUE)[[1]]
