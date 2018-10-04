@@ -71,7 +71,7 @@ methods_generic <- function(x) {
   info <- tibble::as_tibble(info)
   info <- tibble::rownames_to_column(info, "method")
 
-  generic_esc <- gsub("\\.", "\\\\.", x)
+  generic_esc <- gsub("([.\\[])", "\\\\\\1", x)
   info$class <- gsub(paste0("^", generic_esc, "[.,]"), "", info$method)
   info$class <- gsub("-method$", "", info$class)
   info$source <- gsub(paste0(" for ", generic_esc), "", info$from)
