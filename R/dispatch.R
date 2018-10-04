@@ -56,10 +56,21 @@ s3_dispatch <- function(call, env = parent.frame()) {
     list(
       method = names,
       impl = impls,
-      exists = !purrr::map_lgl(impls, is.null)
+      exists = !purrr::map_lgl(impls, is.null),
+      to_next = purrr::map_lgl(impls, calls_next_method)
     ),
     class = "method_table"
   )
+}
+
+calls_next_method <- function(f) {
+  if (is.primitive(f) || is.null(f)) {
+    FALSE
+  } else {
+    uses <- codetools::findGlobals(f, merge = FALSE)$functions
+    any(uses == "NextMethod")
+  }
+
 }
 
 method_find <- function(generic, class, env = parent.frame()) {
@@ -68,9 +79,25 @@ method_find <- function(generic, class, env = parent.frame()) {
 
 #' @export
 print.method_table <- function(x, ...) {
-  bullet <- ifelse(x$exists, " *", "  ")
-  if (any(x$exists)) {
-    bullet[which(x$exists)[1]] <- "->"
+
+  first <- TRUE
+  to_next <- TRUE
+
+  bullet <- character(length(x$exists))
+  for (i in seq_along(x$exists)) {
+    if (!x$exists[[i]]) {
+      bullet[[i]] <- "  "
+    } else {
+      if (first) {
+        bullet[[i]] <- "=>"
+        first <- FALSE
+      } else if (to_next) {
+        bullet[[i]] <- "->"
+      } else {
+        bullet[[i]] <- " *"
+      }
+      to_next <- (to_next || first) && x$to_next[[i]]
+    }
   }
 
   cat(paste0(bullet, " ", x$method, "\n", collapse = ""), sep = "")

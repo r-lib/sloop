@@ -1,0 +1,5 @@
+   *.Date
+   *.default
+=> Ops.Date
+   Ops.default
+-> * (internal)
