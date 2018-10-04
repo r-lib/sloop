@@ -23,7 +23,7 @@ s3_dispatch(sum(x))
 
 # Internal vs. regular generic
 x1 <- 1
-x2 <- structure(2, class = "numeric")
+x2 <- structure(2, class = "double")
 
 my_length <- function(x) UseMethod("my_length")
 s3_dispatch(my_length(x1))

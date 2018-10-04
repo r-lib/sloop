@@ -10,13 +10,17 @@ test_that("finds methods in other namespaces", {
 
 test_that("includes internal generics", {
   out <- s3_dispatch(length(1))
-  expect_equal(out$method[4], "length")
-  expect_equal(out$exists[4], TRUE)
+  expect_length(out$method, 1)
+  expect_equal(out$method[[1]], "length (internal)")
+
+  out <- s3_dispatch(length(structure(1, class = "integer")))
+  expect_length(out$method, 3)
+  expect_equal(out$method[[3]], "length (internal)")
 })
 
 test_that("includes group generics", {
   out <- s3_dispatch(-Sys.Date())
-  expect_equal(out$method, c("-.Date", "-.default", "Ops.Date", "Ops.default", "-"))
+  expect_equal(out$method, c("-.Date", "-.default", "Ops.Date", "Ops.default", "- (internal)"))
   expect_equal(out$exists, c(TRUE, FALSE, TRUE, FALSE, TRUE))
 })
 

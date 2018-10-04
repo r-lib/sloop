@@ -12,7 +12,7 @@
 #'
 #' # Internal vs. regular generic
 #' x1 <- 1
-#' x2 <- structure(2, class = "numeric")
+#' x2 <- structure(2, class = "double")
 #'
 #' my_length <- function(x) UseMethod("my_length")
 #' s3_dispatch(my_length(x1))
@@ -21,7 +21,10 @@
 #' s3_dispatch(length(x1))
 #' s3_dispatch(length(x2))
 s3_dispatch <- function(call, env = parent.frame()) {
-  call <- substitute(call)
+  call <- enexpr(call)
+  if (!is_call(call)) {
+    stop("`call` must be a function call", call. = FALSE)
+  }
   generic <- as.character(call[[1]])
   x <- eval(call[[2]], env)
 
@@ -39,8 +42,14 @@ s3_dispatch <- function(call, env = parent.frame()) {
   # internal generics will always resolve to something
   # currently showing with generic name
   if (is_internal_generic(generic)) {
-    names <- c(names, generic)
-    impls <- c(impls, get(generic))
+    if (is.object(x)) {
+      names <- c(names, paste0(generic, " (internal)"))
+      impls <- c(impls, get(generic))
+    } else {
+      # doesn't do dispatch if not an object
+      names <- paste0(generic, " (internal)")
+      impls <- list(get(generic))
+    }
   }
 
   structure(
