@@ -22,3 +22,52 @@ You can install sloop from github with:
 # install.packages("devtools")
 devtools::install_github("r-lib/sloop")
 ```
+
+## Usage
+
+``` r
+library(sloop)
+```
+
+sloop provides a variety of tools for understanding how S3 works. The
+most useful is probably `s3_dispatch()`. Given a function call, it shows
+the set of methods that are considered, found, and actually called:
+
+``` r
+s3_dispatch(print(Sys.time()))
+#> => print.POSIXct
+#>    print.POSIXt
+#>  * print.default
+```
+
+To the best of my ability it covers all the details of S3 including
+group generics, internal generics, implicit classes, and use of
+`NextMethod()`:
+
+``` r
+# Implicit class
+x <- matrix(1:6, nrow = 2)
+s3_dispatch(print(x))
+#>    print.matrix
+#>    print.integer
+#>    print.numeric
+#> => print.default
+
+# Internal generic 
+s3_dispatch(length(x))
+#> => length (internal)
+
+# NextMethod
+s3_dispatch(Sys.Date()[1])
+#> => [.Date
+#>    [.default
+#> -> [ (internal)
+
+# group generic
+s3_dispatch(sum(Sys.Date()))
+#>    sum.Date
+#>    sum.default
+#> => Summary.Date
+#>    Summary.default
+#> -> sum (internal)
+```

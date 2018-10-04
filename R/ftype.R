@@ -22,6 +22,9 @@ ftype <- function(f) {
   fexpr <- enexpr(f)
   env <- caller_env()
 
+  if (!is.function(f) && !is.function(f))
+    stop("`f` is not a function", call. = FALSE)
+
   if (is.primitive(f)) {
     c("primitive", if (is_internal_generic(primitive_name(f))) "generic")
   } else if (is_internal(f)) {
@@ -61,7 +64,8 @@ primitive_name <- function(f) {
 }
 
 is_internal <- function(f) {
-  if (!is.function(f) || is.primitive(f)) return(FALSE)
+  if (!is.function(f) || is.primitive(f))
+    return(FALSE)
   calls <- findGlobals(f, merge = FALSE)$functions
   any(calls %in% ".Internal")
 }
