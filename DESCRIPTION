@@ -17,7 +17,8 @@ Imports:
     methods,
     purrr,
     rlang,
-    tibble
+    tibble,
+    crayon
 Suggests: 
     covr,
     testthat

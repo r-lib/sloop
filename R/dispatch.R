@@ -100,7 +100,9 @@ print.method_table <- function(x, ...) {
     }
   }
 
-  cat(paste0(bullet, " ", x$method, "\n", collapse = ""), sep = "")
+  method <- ifelse(x$exists, x$method, crayon::silver(x$method))
+
+  cat(paste0(bullet, " ", method, "\n", collapse = ""), sep = "")
   invisible(x)
 }
 
