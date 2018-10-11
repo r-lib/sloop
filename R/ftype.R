@@ -30,11 +30,11 @@ ftype <- function(f) {
   } else if (is_internal(f)) {
     c("internal", if (is_internal_generic(internal_name(f))) "generic")
   } else if (is(f, "standardGeneric")) {
-    c("s4", "generic")
+    c("S4", "generic")
   } else if (is(f, "MethodDefinition")) {
-    c("s4", "method")
+    c("S4", "method")
   } else if (is(f, "refMethodDef")) {
-    c("rc", "method")
+    c("RC", "method")
   } else {
     if (!is_symbol(fexpr)) {
       warning("Determination of S3 status requires function name", call. = FALSE)
@@ -49,7 +49,7 @@ ftype <- function(f) {
     if (!gen & !mth) {
       "function"
     } else {
-      c("s3", if (gen) "generic", if (mth) "method")
+      c("S3", if (gen) "generic", if (mth) "method")
     }
   }
 }
