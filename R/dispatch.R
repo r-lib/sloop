@@ -18,6 +18,7 @@
 #' s3_dispatch(my_length(x1))
 #' s3_dispatch(my_length(x2))
 #'
+#' length.double <- function(x) 10
 #' s3_dispatch(length(x1))
 #' s3_dispatch(length(x2))
 s3_dispatch <- function(call, env = parent.frame()) {
@@ -39,17 +40,13 @@ s3_dispatch <- function(call, env = parent.frame()) {
     impls <- c(impls, method_find(group, class, env = env))
   }
 
-  # internal generics will always resolve to something
-  # currently showing with generic name
+  # internal generics can resolve to internal method
   if (is_internal_generic(generic)) {
-    if (is.object(x)) {
-      names <- c(names, paste0(generic, " (internal)"))
-      impls <- c(impls, get(generic))
-    } else {
-      # doesn't do dispatch if not an object
-      names <- paste0(generic, " (internal)")
-      impls <- list(get(generic))
-    }
+    internal <- !is.object(x)
+    names <- c(names, paste0(generic, " (internal)"))
+    impls <- c(impls, get(generic))
+  } else {
+    internal <- FALSE
   }
 
   structure(
@@ -59,6 +56,7 @@ s3_dispatch <- function(call, env = parent.frame()) {
       exists = !purrr::map_lgl(impls, is.null),
       to_next = purrr::map_lgl(impls, calls_next_method)
     ),
+    internal = internal,
     class = "method_table"
   )
 }
@@ -80,23 +78,29 @@ method_find <- function(generic, class, env = parent.frame()) {
 #' @export
 print.method_table <- function(x, ...) {
 
-  first <- TRUE
-  to_next <- TRUE
 
-  bullet <- character(length(x$exists))
-  for (i in seq_along(x$exists)) {
-    if (!x$exists[[i]]) {
-      bullet[[i]] <- "  "
-    } else {
-      if (first) {
-        bullet[[i]] <- "=>"
-        first <- FALSE
-      } else if (to_next) {
-        bullet[[i]] <- "->"
+  if (attr(x, "internal")) {
+    bullet <- ifelse(x$exists, " *", "  ")
+    bullet[[length(bullet)]] <- "=>"
+  } else {
+    first <- TRUE
+    to_next <- TRUE
+
+    bullet <- character(length(x$exists))
+    for (i in seq_along(x$exists)) {
+      if (!x$exists[[i]]) {
+        bullet[[i]] <- "  "
       } else {
-        bullet[[i]] <- " *"
+        if (first) {
+          bullet[[i]] <- "=>"
+          first <- FALSE
+        } else if (to_next) {
+          bullet[[i]] <- "->"
+        } else {
+          bullet[[i]] <- " *"
+        }
+        to_next <- (to_next || first) && x$to_next[[i]]
       }
-      to_next <- (to_next || first) && x$to_next[[i]]
     }
   }
 

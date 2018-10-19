@@ -10,8 +10,8 @@ test_that("finds methods in other namespaces", {
 
 test_that("includes internal generics", {
   out <- s3_dispatch(length(1))
-  expect_length(out$method, 1)
-  expect_equal(out$method[[1]], "length (internal)")
+  expect_length(out$method, 4)
+  expect_equal(out$method[[4]], "length (internal)")
 
   out <- s3_dispatch(length(structure(1, class = "integer")))
   expect_length(out$method, 3)
