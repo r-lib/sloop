@@ -13,6 +13,9 @@ coverage](https://codecov.io/gh/r-lib/sloop/branch/master/graph/badge.svg)](http
 The goal of sloop is to provide tools to help you interactively explore
 and understand object oriented programming in R, particularly with S3.
 
+Please note that unlike other [r-lib](https://github.com/r-lib)
+packages, sloop only works with R 3.3 and later.
+
 ## Installation
 
 You can install sloop from github with:

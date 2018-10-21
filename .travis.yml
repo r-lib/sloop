@@ -4,6 +4,9 @@ language: R
 sudo: false
 cache: packages
 
+# Don't check on older versions: would be a lot of work to figure out
+# precise changes, and it doesn't seem like it would pay off since this
+# sloop is for interactive exploration.
 r:
 - oldrel
 - release
