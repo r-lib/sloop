@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.org/r-lib/sloop.svg?branch=master)](https://travis-ci.org/r-lib/sloop)
 [![Codecov test coverage](https://codecov.io/gh/r-lib/sloop/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/sloop?branch=master)
 
-The goal of sloop is to provide tools to help interactive explore and understand object oriented programming in R. For help creating new classes of S3 vector, see the [vctrs](https://vctrs.r-lib.org) package.
+The goal of sloop is to provide tools to help you interactively explore and understand object oriented programming in R, particularly with S3.
 
 ## Installation
 
@@ -31,7 +31,7 @@ devtools::install_github("r-lib/sloop")
 
 ## Usage
 
-```{r}
+```{r setup}
 library(sloop)
 ```
 
@@ -41,7 +41,7 @@ sloop provides a variety of tools for understanding how S3 works. The most usefu
 s3_dispatch(print(Sys.time()))
 ```
 
-To the best of my ability it covers all the details of S3 including group generics, internal generics, implicit classes, and use of `NextMethod()`:
+To the best of my ability it covers all the details of S3 method dispatch including group generics, internal generics, implicit classes, and use of `NextMethod()` (indiciated by `<-`):
 
 ```{r}
 # Implicit class
@@ -49,13 +49,15 @@ x <- matrix(1:6, nrow = 2)
 s3_dispatch(print(x))
 
 # Internal generic 
+length.numeric <- function(x) 10
 s3_dispatch(length(x))
-s3_dispatch(length(mtcars))
+
+s3_dispatch(length(structure(x, class = "numeric")))
 
 # NextMethod
 s3_dispatch(Sys.Date()[1])
 
-# group generic
+# group generic + NextMethod()
 s3_dispatch(sum(Sys.Date()))
 ```
 

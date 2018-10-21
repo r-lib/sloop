@@ -5,8 +5,8 @@ Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("RStudio", role = "cph")
   )
-Description: A collection of helper functions to support object
-    oriented programming.
+Description: A collection of helper functions designed to help you to better 
+    understand object oriented programming in R, particularly using S3.
 License: GPL-3
 URL: https://github.com/r-lib/sloop
 BugReports: https://github.com/r-lib/sloop/issues
