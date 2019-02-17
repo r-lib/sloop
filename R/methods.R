@@ -60,7 +60,7 @@ methods_class <- function(x) {
   info <- tibble::as_tibble(info)
   info <- tibble::rownames_to_column(info, "method")
 
-  info$class <- x
+  info$class <- rep(x, length = nrow(info))
   info$source <- as.character(info$from)
 
   info[c("generic", "class", "visible", "source", "isS4")]
