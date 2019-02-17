@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sloop.r-lib.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/ftype.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/is_s3_generic.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/otype.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/s3_class.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/s3_dispatch.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/s3_get_method.html</loc>
+  </url>
+  <url>
+    <loc>https://sloop.r-lib.org/reference/s3_methods_class.html</loc>
+  </url>
+</urlset>
