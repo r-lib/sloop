@@ -32,7 +32,15 @@
 
 <meta property="og:title" content="Illustrate S3 dispatch — s3_dispatch" />
 
-<meta property="og:description" content="Illustrate S3 dispatch" />
+<meta property="og:description" content="s3_dispatch() prints a list of all possible function names that will be
+considered for method dispatch. There are four possible states:
+=&amp;gt; method exists and is found by UseMethod().
+-&amp;gt; method exists and is used by NextMethod().
+* method exists but is not used.
+Nothing (and greyed out in console): method does not exist.
+" />
+
+<meta property="og:description" content="Learn more at https://adv-r.hadley.nz/s3.html." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,7 +117,15 @@
 
     <div class="ref-description">
     
-    <p>Illustrate S3 dispatch</p>
+    <p><code>s3_dispatch()</code> prints a list of all possible function names that will be
+considered for method dispatch. There are four possible states:</p><ul>
+<li><p><code>=&gt;</code> method exists and is found by <code><a href='https://www.rdocumentation.org/packages/base/topics/UseMethod'>UseMethod()</a></code>.</p></li>
+<li><p><code>-&gt;</code> method exists and is used by <code><a href='https://www.rdocumentation.org/packages/base/topics/UseMethod'>NextMethod()</a></code>.</p></li>
+<li><p><code>*</code> method exists but is not used.</p></li>
+<li><p>Nothing (and greyed out in console): method does not exist.</p></li>
+</ul>
+
+    <p>Learn more at <a href='https://adv-r.hadley.nz/s3.html'>https://adv-r.hadley.nz/s3.html</a>.</p>
     
     </div>
 

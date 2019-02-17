@@ -96,7 +96,7 @@
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; =&gt; print.POSIXct</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;    print.POSIXt</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;  * print.default</span></a></code></pre></div>
-<p>To the best of my ability it covers all the details of S3 method dispatch including group generics, internal generics, implicit classes, and use of <code><a href="https://www.rdocumentation.org/packages/base/topics/UseMethod">NextMethod()</a></code> (indiciated by <code>&lt;-</code>):</p>
+<p>To the best of my ability it covers all the details of S3 method dispatch including group generics, internal generics, implicit classes, and use of <code><a href="https://www.rdocumentation.org/packages/base/topics/UseMethod">NextMethod()</a></code> (indicated by <code>-&gt;</code>):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Implicit class</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/s3_dispatch.html">s3_dispatch</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(x))</a>
@@ -165,18 +165,18 @@
 <a class="sourceLine" id="cb6-16" data-line-number="16"></a>
 <a class="sourceLine" id="cb6-17" data-line-number="17"><span class="kw"><a href="reference/s3_methods_class.html">s3_methods_generic</a></span>(<span class="st">"summary"</span>)</a>
 <a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; # A tibble: 40 x 4</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;    generic class visible source             </span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;lgl&gt;   &lt;chr&gt;              </span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  1 summary 1     TRUE    stats              </span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  2 summary 2     FALSE   registered S3method</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  3 summary 3     FALSE   registered S3method</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  4 summary 4     FALSE   registered S3method</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  5 summary 5     TRUE    base               </span></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  6 summary 6     TRUE    base               </span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  7 summary 7     TRUE    base               </span></a>
-<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  8 summary 8     TRUE    base               </span></a>
-<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt;  9 summary 9     FALSE   registered S3method</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; 10 summary 10    TRUE    base               </span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;    generic class                 visible source             </span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                 &lt;lgl&gt;   &lt;chr&gt;              </span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  1 summary aov                   TRUE    stats              </span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  2 summary aovlist               FALSE   registered S3method</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  3 summary aspell                FALSE   registered S3method</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  4 summary check_packages_in_dir FALSE   registered S3method</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  5 summary connection            TRUE    base               </span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  6 summary data.frame            TRUE    base               </span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  7 summary Date                  TRUE    base               </span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  8 summary default               TRUE    base               </span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt;  9 summary ecdf                  FALSE   registered S3method</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; 10 summary factor                TRUE    base               </span></a>
 <a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; # … with 30 more rows</span></a></code></pre></div>
 </div>
 </div>
