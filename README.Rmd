@@ -43,7 +43,7 @@ sloop provides a variety of tools for understanding how S3 works. The most usefu
 s3_dispatch(print(Sys.time()))
 ```
 
-To the best of my ability it covers all the details of S3 method dispatch including group generics, internal generics, implicit classes, and use of `NextMethod()` (indiciated by `<-`):
+To the best of my ability it covers all the details of S3 method dispatch including group generics, internal generics, implicit classes, and use of `NextMethod()` (indicated by `->`):
 
 ```{r}
 # Implicit class

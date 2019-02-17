@@ -1,5 +1,16 @@
 #' Illustrate S3 dispatch
 #'
+#' @description
+#' `s3_dispatch()` prints a list of all possible function names that will be
+#' considered for method dispatch. There are four possible states:
+#'
+#' * `=>` method exists and is found by `UseMethod()`.
+#' * `->` method exists and is used by `NextMethod()`.
+#' * `*` method exists but is not used.
+#' * Nothing (and greyed out in console): method does not exist.
+#'
+#' Learn more at <https://adv-r.hadley.nz/s3.html>.
+#'
 #' @param call Example call to S3 method
 #' @param env Environment in which to evaluate call
 #' @export

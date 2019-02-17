@@ -44,7 +44,7 @@ s3_dispatch(print(Sys.time()))
 
 To the best of my ability it covers all the details of S3 method
 dispatch including group generics, internal generics, implicit classes,
-and use of `NextMethod()` (indiciated by `<-`):
+and use of `NextMethod()` (indicated by `->`):
 
 ``` r
 # Implicit class
@@ -120,10 +120,10 @@ s3_methods_class("factor")
 #>  8 as.Date       factor TRUE    base  
 #>  9 as.list       factor TRUE    base  
 #> 10 as.logical    factor TRUE    base  
-#> # ... with 17 more rows
+#> # … with 17 more rows
 
 s3_methods_generic("summary")
-#> # A tibble: 35 x 4
+#> # A tibble: 36 x 4
 #>    generic class                 visible source             
 #>    <chr>   <chr>                 <lgl>   <chr>              
 #>  1 summary aov                   TRUE    stats              
@@ -136,5 +136,5 @@ s3_methods_generic("summary")
 #>  8 summary default               TRUE    base               
 #>  9 summary ecdf                  FALSE   registered S3method
 #> 10 summary factor                TRUE    base               
-#> # ... with 25 more rows
+#> # … with 26 more rows
 ```

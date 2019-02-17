@@ -12,7 +12,16 @@ s3_dispatch(call, env = parent.frame())
 \item{env}{Environment in which to evaluate call}
 }
 \description{
-Illustrate S3 dispatch
+\code{s3_dispatch()} prints a list of all possible function names that will be
+considered for method dispatch. There are four possible states:
+\itemize{
+\item \code{=>} method exists and is found by \code{UseMethod()}.
+\item \code{->} method exists and is used by \code{NextMethod()}.
+\item \code{*} method exists but is not used.
+\item Nothing (and greyed out in console): method does not exist.
+}
+
+Learn more at \url{https://adv-r.hadley.nz/s3.html}.
 }
 \examples{
 x <- Sys.time()
