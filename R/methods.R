@@ -68,8 +68,7 @@ methods_class <- function(x) {
 
 methods_generic <- function(x) {
   info <- attr(utils::methods(x), "info")
-  info <- tibble::as_tibble(info)
-  info <- tibble::rownames_to_column(info, "method")
+  info <- tibble::as_tibble(info, rownames = "method")
 
   generic_esc <- gsub("([.\\[])", "\\\\\\1", x)
   info$class <- gsub(paste0("^", generic_esc, "[.,]"), "", info$method)
@@ -78,3 +77,7 @@ methods_generic <- function(x) {
 
   info[c("generic", "class", "visible", "source", "isS4")]
 }
+
+# Needed for testing
+sloop_foo <- function(x) UseMethod("sloop_foo")
+sloop_foo.blah <- function(x) 1
