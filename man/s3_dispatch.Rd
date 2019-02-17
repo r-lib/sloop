@@ -29,6 +29,7 @@ my_length <- function(x) UseMethod("my_length")
 s3_dispatch(my_length(x1))
 s3_dispatch(my_length(x2))
 
+length.double <- function(x) 10
 s3_dispatch(length(x1))
 s3_dispatch(length(x2))
 }

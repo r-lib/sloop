@@ -7,10 +7,19 @@ cache: packages
 # Don't check on older versions: would be a lot of work to figure out
 # precise changes, and it doesn't seem like it would pay off since this
 # sloop is for interactive exploration.
-r:
-- oldrel
-- release
-- devel
+matrix:
+  include:
+  - r: devel
+  - r: release
+    after_success:
+    - Rscript -e 'covr::codecov()'
+    before_cache:
+    - Rscript -e 'remotes::install_github("r-lib/pkgdown")'
+    - Rscript -e 'remotes::install_github("tidyverse/tidytemplate")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+      skip_cleanup: true
 
 after_success:
   - Rscript -e 'covr::codecov()'
