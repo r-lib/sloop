@@ -1,4 +1,4 @@
-# sloop 1.0.0.9000
+# sloop 1.0.1
 
 * sloop has a website: http://sloop.r-lib.org/ !
 
