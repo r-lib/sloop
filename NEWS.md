@@ -1,3 +1,5 @@
+# sloop (development version)
+
 # sloop 1.0.1
 
 * sloop has a website: http://sloop.r-lib.org/ !
