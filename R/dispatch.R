@@ -37,7 +37,13 @@ s3_dispatch <- function(call, env = parent.frame()) {
   if (!is_call(call)) {
     stop("`call` must be a function call", call. = FALSE)
   }
-  generic <- as.character(call[[1]])
+
+  f <- call[[1]]
+  if (is_call(f)) {
+    n <- length(f)
+    f <- f[[n]]
+  }
+  generic <- as.character(f)
   x <- eval(call[[2]], env)
 
   class <- c(s3_class(x), "default")

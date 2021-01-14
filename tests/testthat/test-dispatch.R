@@ -18,6 +18,12 @@ test_that("includes internal generics", {
   expect_equal(out$method[[3]], "length (internal)")
 })
 
+test_that("can handle namespaced function call", {
+  out <- s3_dispatch(base::length(1))
+  expect_length(out$method, 4)
+  expect_equal(out$method[[4]], "length (internal)")
+})
+
 test_that("includes group generics", {
   out <- s3_dispatch(-Sys.Date())
   expect_equal(out$method, c("-.Date", "-.default", "Ops.Date", "Ops.default", "- (internal)"))
