@@ -19,8 +19,7 @@ s4_methods_generic(x)
 \item{x}{Name of class or generic}
 }
 \value{
-A tibble with columns \code{generic}, \code{visible}, \code{class}, \code{visible},
-and \code{source}.
+A tibble with columns \code{generic}, \code{class}, \code{visible}, and \code{source}.
 }
 \description{
 Returns information about all methods belong to a generic or a class.
