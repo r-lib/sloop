@@ -7,8 +7,7 @@
 #' in an attribute.
 #'
 #' @param x Name of class or generic
-#' @return A tibble with columns `generic`, `visible`, `class`, `visible`,
-#'   and `source`.
+#' @return A tibble with columns `generic`, `class`, `visible`, and `source`.
 #' @export
 #' @examples
 #' s3_methods_class("Date")
