@@ -1,5 +1,7 @@
 # sloop (development version)
 
+* `s3_dispatch()` now works for namespaced function calls (#25, @mgirlich).
+
 # sloop 1.0.1
 
 * sloop has a website: http://sloop.r-lib.org/ !
