@@ -1,5 +1,3 @@
-context("s3_class")
-
 test_that("integer and double have final component", {
   expect_equal(s3_class(1:10), c("integer", "numeric"))
   expect_equal(s3_class(matrix(1.5, 1, 1)), c("matrix", "double", "numeric"))

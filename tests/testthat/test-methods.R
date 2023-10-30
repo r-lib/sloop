@@ -1,5 +1,3 @@
-context("test-methods")
-
 test_that("multiplication works", {
   registerS3method("sloop_foo", "blah", function(x) {}, envir = asNamespace("sloop"))
 
