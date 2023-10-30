@@ -3,12 +3,14 @@
 
 # sloop
 
+<!-- badges: start -->
+
 [![CRAN
 status](https://www.r-pkg.org/badges/version/sloop)](https://cran.r-project.org/package=sloop)
-[![Travis build
-status](https://travis-ci.org/r-lib/sloop.svg?branch=master)](https://travis-ci.org/r-lib/sloop)
+[![R-CMD-check](https://github.com/r-lib/sloop/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/sloop/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/sloop/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/sloop?branch=master)
+coverage](https://codecov.io/gh/r-lib/sloop/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/sloop?branch=main)
+<!-- badges: end -->
 
 The goal of sloop is to provide tools to help you interactively explore
 and understand object oriented programming in R, particularly with S3.
@@ -107,7 +109,7 @@ And for retrieving the methods associated with a generic or class:
 
 ``` r
 s3_methods_class("factor")
-#> # A tibble: 27 x 4
+#> # A tibble: 28 × 4
 #>    generic       class  visible source
 #>    <chr>         <chr>  <lgl>   <chr> 
 #>  1 [             factor TRUE    base  
@@ -120,10 +122,10 @@ s3_methods_class("factor")
 #>  8 as.Date       factor TRUE    base  
 #>  9 as.list       factor TRUE    base  
 #> 10 as.logical    factor TRUE    base  
-#> # … with 17 more rows
+#> # ℹ 18 more rows
 
 s3_methods_generic("summary")
-#> # A tibble: 36 x 4
+#> # A tibble: 39 × 4
 #>    generic class                 visible source             
 #>    <chr>   <chr>                 <lgl>   <chr>              
 #>  1 summary aov                   TRUE    stats              
@@ -136,5 +138,5 @@ s3_methods_generic("summary")
 #>  8 summary default               TRUE    base               
 #>  9 summary ecdf                  FALSE   registered S3method
 #> 10 summary factor                TRUE    base               
-#> # … with 26 more rows
+#> # ℹ 29 more rows
 ```
