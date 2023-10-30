@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sloop
+# sloop <a href="https://sloop.r-lib.org"><img src="man/figures/logo.png" align="right" height="138" alt="sloop website" /></a>
 
 <!-- badges: start -->
 
