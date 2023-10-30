@@ -2,8 +2,8 @@ Package: sloop
 Title: Helpers for 'OOP' in R
 Version: 1.0.1.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
-    person("RStudio", role = "cph")
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
+    person(given = "Posit Software, PBC", role = c("cph", "fnd"))
   )
 Description: A collection of helper functions designed to help you to
     better understand object oriented programming in R, particularly using
