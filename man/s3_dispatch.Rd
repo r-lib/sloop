@@ -15,8 +15,8 @@ s3_dispatch(call, env = parent.frame())
 \code{s3_dispatch()} prints a list of all possible function names that will be
 considered for method dispatch. There are four possible states:
 \itemize{
-\item \code{=>} method exists and is found by \code{UseMethod()}.
-\item \code{->} method exists and is used by \code{NextMethod()}.
+\item \verb{=>} method exists and is found by \code{UseMethod()}.
+\item \verb{->} method exists and is used by \code{NextMethod()}.
 \item \code{*} method exists but is not used.
 \item Nothing (and greyed out in console): method does not exist.
 }
