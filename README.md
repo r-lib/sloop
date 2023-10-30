@@ -23,8 +23,8 @@ packages, sloop only works with R 3.3 and later.
 You can install sloop from github with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("r-lib/sloop")
+# install.packages("pak")
+pak::pak("r-lib/sloop")
 ```
 
 ## Usage

@@ -29,8 +29,8 @@ Please note that unlike other [r-lib](https://github.com/r-lib) packages, sloop 
 You can install sloop from github with:
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("r-lib/sloop")
+# install.packages("pak")
+pak::pak("r-lib/sloop")
 ```
 
 ## Usage
