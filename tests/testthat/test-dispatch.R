@@ -1,5 +1,3 @@
-context("dispatch")
-
 test_that("finds methods in other namespaces", {
   mod1 <- glm(mpg ~ wt, data = mtcars)
 
@@ -25,13 +23,8 @@ test_that("includes group generics", {
 })
 
 test_that("has nice output", {
-  expect_known_output(
-    print(s3_dispatch(Sys.Date() + 1)),
-    test_path("test-dispatch-print.txt")
-  )
-
-  expect_known_output(
-    print(s3_dispatch(Sys.Date() * 1)),
-    test_path("test-dispatch-print-nextmethod.txt")
-  )
+  expect_snapshot({
+    s3_dispatch(Sys.Date() + 1)
+    s3_dispatch(Sys.Date() * 1)
+  })
 })

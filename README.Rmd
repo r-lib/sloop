@@ -12,11 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# sloop
+# sloop <a href="https://sloop.r-lib.org"><img src="man/figures/logo.png" align="right" height="138" alt="sloop website" /></a>
 
+<!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/sloop)](https://cran.r-project.org/package=sloop)
-[![Travis build status](https://travis-ci.org/r-lib/sloop.svg?branch=master)](https://travis-ci.org/r-lib/sloop)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/sloop/branch/master/graph/badge.svg)](https://codecov.io/github/r-lib/sloop?branch=master)
+[![R-CMD-check](https://github.com/r-lib/sloop/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/sloop/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/sloop/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/sloop?branch=main)
+<!-- badges: end -->
 
 The goal of sloop is to provide tools to help you interactively explore and understand object oriented programming in R, particularly with S3.
 
@@ -27,8 +29,8 @@ Please note that unlike other [r-lib](https://github.com/r-lib) packages, sloop 
 You can install sloop from github with:
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("r-lib/sloop")
+# install.packages("pak")
+pak::pak("r-lib/sloop")
 ```
 
 ## Usage

@@ -1,5 +1,3 @@
-context("ftype")
-
 test_that("functions return as expected", {
   f <- function(x) x
   expect_equal(ftype(f), "function")
