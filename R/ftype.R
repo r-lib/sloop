@@ -29,7 +29,7 @@ ftype <- function(f) {
     c("primitive", if (is_internal_generic(primitive_name(f))) "generic")
   } else if (is_internal(f)) {
     c("internal", if (is_internal_generic(internal_name(f))) "generic")
-  } else if (is(f, "standardGeneric")) {
+  } else if (is(f, "genericFunction")) {
     c("S4", "generic")
   } else if (is(f, "MethodDefinition")) {
     c("S4", "method")
